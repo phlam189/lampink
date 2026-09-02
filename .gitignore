@@ -1,0 +1,58 @@
+#/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+.env
+.env.backup
+.env.production
+.env.stage
+.env.local
+.env.*.local
+
+# Database & SQLite
+/*.sqlite
+/*.sqlite-journal
+/*.sqlite-shm
+/*.sqlite-wal
+
+# Storage logs & framework cache
+/storage/app/*
+!/storage/app/.gitignore
+/storage/app/public/*
+!/storage/app/public/.gitignore
+/storage/framework/cache/*
+!/storage/framework/cache/.gitignore
+/storage/framework/cache/data/*
+!/storage/framework/cache/data/.gitignore
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitignore
+/storage/framework/testing/*
+!/storage/framework/testing/.gitignore
+/storage/framework/views/*
+!/storage/framework/views/.gitignore
+/storage/logs/*
+!/storage/logs/.gitignore
+
+# Testing & Linting
+.phpunit.result.cache
+.php-cs-fixer.cache
+/coverage
+
+# IDE & Editor files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Docker / Laradock local data & overrides
+laradock/data
+laradock/logs
+docker-compose.override.yml
+/vendor/
