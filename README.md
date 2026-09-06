@@ -40,8 +40,8 @@ Laradock hoặc Docker Lite giúp đóng gói toàn bộ môi trường PHP 8.3+
 
 #### 1. Clone Project & Thêm Laradock Submodule
 ```bash
-git clone https://github.com/your-username/web-doc-truyen-laravel13.git
-cd web-doc-truyen-laravel13
+git clone https://github.com/phlam189/lampink.git ten-project
+cd ten-project
 
 # Add Laradock dưới dạng Git Submodule
 git submodule add https://github.com/Laradock/laradock.git laradock
@@ -58,11 +58,11 @@ Chỉnh sửa các thông số cơ bản trong file `laradock/.env`:
 APP_CODE_PATH_HOST=../
 
 # PHP 8.3 cho Laravel 13
-PHP_VERSION=8.3
+PHP_VERSION=8.4
 
 # Cấu hình MySQL & Redis
 MYSQL_VERSION=8.0
-MYSQL_DATABASE=web_doc_truyen
+MYSQL_DATABASE=lampink
 MYSQL_USER=default
 MYSQL_PASSWORD=secret
 MYSQL_PORT=3306
@@ -72,7 +72,7 @@ REDIS_PORT=6379
 
 #### 3. Khởi Chạy Các Docker Containers
 ```bash
-docker-compose up -d nginx mysql redis workspace phpmyadmin
+docker-compose up -d nginx mysql redis workspace mailhog phpmyadmin
 ```
 
 #### 4. Cấu Hình Laravel Trong Workspace Container
@@ -140,8 +140,8 @@ php artisan queue:work redis
 
 ```bash
 # 1. Clone & Cài đặt
-git clone https://github.com/your-username/web-doc-truyen-laravel13.git
-cd web-doc-truyen-laravel13
+git clone https://github.com/phlam189/lampink.git
+cd lampink
 composer install
 npm install && npm run build
 
