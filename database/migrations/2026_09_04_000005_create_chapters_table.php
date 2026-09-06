@@ -24,6 +24,9 @@ return new class extends Migration {
             $table->softDeletes();
 
             $table->index(['next_chapter_id', 'prev_chapter_id'], 'idx_next_prev');
+            $table->index(['novel_id', 'chapter_number'], 'idx_novel_chapter');
+            $table->index(['is_vip'], 'idx_is_vip');
+            $table->index(['views_count'], 'idx_views_count');
         });
     }
 

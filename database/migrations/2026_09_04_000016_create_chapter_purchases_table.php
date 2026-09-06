@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('chapter_purchases', function (Blueprint $table) {
-            $table->unsignedBigInteger('chapter_id');
-            $table->unsignedBigInteger('coin_transaction_id');
+            $table->foreignId('chapter_id')->constrained('chapters')->cascadeOnDelete();
+            $table->foreignId('coin_transaction_id')->constrained('coin_transactions')->cascadeOnDelete();
             $table->primary(['chapter_id', 'coin_transaction_id']);
         });
     }

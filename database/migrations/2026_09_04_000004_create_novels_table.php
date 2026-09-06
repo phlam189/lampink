@@ -27,6 +27,9 @@ return new class extends Migration {
             $table->softDeletes();
 
             $table->index(['views_total', 'is_hot'], 'idx_views_rank');
+            $table->index(['rating_avg', 'is_hot'], 'idx_rating_rank');
+            $table->index(['status', 'type'], 'idx_status_type');
+            $table->index(['author_id', 'status'], 'idx_author_status');
         });
     }
 
