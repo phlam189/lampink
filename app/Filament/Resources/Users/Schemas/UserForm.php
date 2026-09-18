@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
-use Filament\Forms\Components\DateTimePicker;
+use App\Models\Team;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
@@ -33,6 +33,14 @@ class UserForm
                     ->required()
                     ->numeric()
                     ->default(0),
+                Select::make('team_id')
+                    ->label('Team')
+                    ->relationship('team', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->exists(Team::class, 'id')
+                    ->visible(fn ($get) => $get('role') === 'team')
+                    ->dehydrateStateUsing(fn ($state, $get) => $get('role') === 'team' ? $state : null),
             ]);
     }
 }
