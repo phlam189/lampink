@@ -33,6 +33,10 @@ class UserForm
                     ->required()
                     ->numeric()
                     ->default(0),
+                Select::make('team_id')
+                    ->label('Team')
+                    ->relationship('team', 'name')
+                    ->visible(fn ($get) => $get('role') === 'team'),
             ]);
     }
 }

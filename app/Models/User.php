@@ -7,10 +7,11 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password', 'role', 'coins_balance'])]
+#[Fillable(['name', 'email', 'password', 'role', 'coins_balance', 'team_id'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -29,4 +30,29 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function novels()
+    {
+        return $this->hasMany(Novel::class, 'uploader_id');
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class, 'team_id');
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isTeam(): bool
+    {
+        return $this->role === 'team';
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
 }
